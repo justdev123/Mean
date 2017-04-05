@@ -12,10 +12,18 @@ import { PatientDataService } from './Services/patient-data.service';
 
 export class ChoiceComponent implements OnInit {
 public signupimage : string ="./app/Images/sign_up_button.png";
+
 ngOnInit(){
-console.log(this.patientService.getAllPatients());
+ // console.log('choice constructor');
+    //console.log(this.patientService.getAllPatients());
+
+  //  this.patientService.getAllPatients().subscribe((data)=>{
+   //data is your patient list
+
+     // console.log(data.length);
+    //})
 }
-constructor(private _router:Router,private patientService: PatientDataService)
+ constructor(private _router:Router,private patientService: PatientDataService)
  {
  }
 

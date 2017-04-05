@@ -1,4 +1,4 @@
-<form [formGroup]="signUpDetailsForm" novalidate (ngSubmit)="onSubmit(signUpDetailsForm.value,signUpDetailsForm.valid)">
+<form [formGroup]="signUpDetailsForm"  (ngSubmit)="onSubmit(signUpDetailsForm.value,signUpDetailsForm.valid)">
     <div class="container">
         <header></header>
          <div class="content-container white-background">
@@ -9,21 +9,21 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <div class="form-text">FirstName</div>
-                    <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['firstname']"
-                        name="firstname">
+                    <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['firstName']"
+                        name="firstName">
 
-                        <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['firstname'].hasError('required')) &&
-                 !(signUpDetailsForm.controls.firstname.valid || (signUpDetailsForm.controls.firstname.pristine && !submitted))">You must enter First Name.</div>
+                        <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['firstName'].hasError('required')) &&
+                 !(signUpDetailsForm.controls.firstName.valid || (signUpDetailsForm.controls.firstName.pristine && !submitted))">You must enter First Name.</div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <div class="form-text">LastName</div>
-                <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['lastname']"
-                    name="lastname">
+                <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['lastName']"
+                    name="lastName">
 
-                    <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['lastname'].hasError('required')) && 
-                        !(signUpDetailsForm.controls.lastname.valid || (signUpDetailsForm.controls.lastname.pristine && !submitted))">You must enter Last Name.</div>
+                    <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['lastName'].hasError('required')) && 
+                        !(signUpDetailsForm.controls.lastName.valid || (signUpDetailsForm.controls.lastName.pristine && !submitted))">You must enter Last Name.</div>
         </div>
     </div>
     <div class="col-md-2"></div>

@@ -11,7 +11,13 @@ export class ThankYouComponent implements OnInit {
 
 constructor(private patientService: PatientDataService) {}
 ngOnInit(){
-console.log(this.patientService.getAllPatients());
+
+    
+    this.patientService.getAllPatients().subscribe((data)=>{
+   //data is your patient list
+
+      console.log(data);
+    })
 }
 
 }

@@ -14,7 +14,7 @@ import { CustomerComponent } from './customer.component';
 import { TestComponent } from './test.component';
 import { HeaderComponent } from './Header.component';
 import { RoutingModule } from './route.module';
-import { $http } from './Services/xhr-factory';
+
 
 @NgModule({
   declarations: [

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, Validator, FormControl } from '@angular/forms';
 import { Router,ActivatedRoute,Params } from '@angular/router';
 import { PatientDataService } from '../../Services/patient-data.service';
-import { Patient } from '../../patient.interface';
+
 @Component({
 
   templateUrl: './insuranceyes.component.html',
@@ -10,7 +10,7 @@ styleUrls: ['signup.component.css'],
 providers:[PatientDataService]
 })
 
-export class InsurenceYesComponent implements OnInit{
+export class InsurenceYesComponent {
   signUpDetailsForm: FormGroup;
   public submitted : boolean;
 
@@ -25,17 +25,13 @@ public submitimage : string ="./app/Images/submit.jpg";
 
 
 
-  constructor(private _router: Router,public fb: FormBuilder,private patientService: PatientDataService,private activatedRoute: ActivatedRoute) {
- 
-  }
-
-ngOnInit() {
-     
-    this.selectedOption=1;
+  constructor(private _router: Router,public fb: FormBuilder,private patientService: PatientDataService,
+  private activatedRoute: ActivatedRoute) {
+  this.selectedOption=1;
         // we will initialize our form model here
          this.signUpDetailsForm = this.fb.group({
-    'firstname': [null, Validators.required],
-    'lastname': [null, Validators.required],
+    'firstName': [null, Validators.required],
+    'lastName': [null, Validators.required],
     
     'details': [null, Validators.required],
     'confirm': [null, Validators.required],
@@ -44,9 +40,26 @@ ngOnInit() {
     // subscribe to payment method type changes
 this.subscribePaymentTypeChanges();
   this.setContactMethodType(this.CONTACT_METHOD_TYPE.EMAIL);
-    
-}
+  }
+   setContactMethodType(type: string) {
+    console.log(type);
+      const ctrl: FormControl = (<any>this.signUpDetailsForm).controls.contactMethod.controls.type;
+      ctrl.setValue(type);
+    }
 
+
+initContactMethodFormGroup() {
+      // initialize payment method form group
+
+       const group = this.fb.group({
+            type: [''],
+            Email: this.fb.group(this.initEmailMethodModel()),
+            Phone: this.fb.group(this.initPhoneMethodModel()),
+            Both: this.fb.group(this.initEmailPhoneMethodModel()),
+        });
+      
+      return group;
+    }
 
 
 subscribePaymentTypeChanges() {
@@ -129,42 +142,9 @@ subscribePaymentTypeChanges() {
     });
 }
 
-   setContactMethodType(type: string) {
-    console.log(type);
-      const ctrl: FormControl = (<any>this.signUpDetailsForm).controls.contactMethod.controls.type;
-      ctrl.setValue(type);
-    }
 
-initContactMethodFormGroup() {
-      // initialize payment method form group
 
-       const group = this.fb.group({
-            type: [''],
-            Email: this.fb.group(this.initEmailMethodModel()),
-            Phone: this.fb.group(this.initPhoneMethodModel()),
-            Both: this.fb.group(this.initEmailPhoneMethodModel()),
-        });
-      
-      return group;
-    }
 
-    EmailClicked(){
-      const ctrl: FormControl = (<any>this.signUpDetailsForm).controls.contactMethod.controls.type;
-      ctrl.setValue("Email");
-      this.selectedOption=1;
-    }
-
-PhoneClicked(){
-      const ctrl: FormControl = (<any>this.signUpDetailsForm).controls.contactMethod.controls.type;
-      ctrl.setValue("Phone");
-      this.selectedOption=2;
-    }
-
-BothClicked(){
-      const ctrl: FormControl = (<any>this.signUpDetailsForm).controls.contactMethod.controls.type;
-      ctrl.setValue("Both");
-      this.selectedOption=3;
-    }
 
 initEmailMethodModel(){
    const model = {
@@ -185,7 +165,7 @@ initPhoneMethodModel(){
 initEmailPhoneMethodModel(){
  
    const model = {
-     'emailBoth': [null, Validators.required],
+        'emailBoth': [null, Validators.required],
         'phoneBoth': [null, Validators.required],
       };
       
@@ -193,20 +173,48 @@ initEmailPhoneMethodModel(){
  
 }
 
-  onSubmit(model:Patient,isvalid: boolean){
+  onSubmit(model:any,isvalid: boolean){
       this.submitted = true;
       if(isvalid)
       {
-         
          model.DateOfBirth=this.activatedRoute.snapshot.params['dob'];
          model.question1=this.activatedRoute.snapshot.params['res'];
          model.question2=this.activatedRoute.snapshot.params['ins'];
-          
+         if(this.selectedOption==3)
+         {
+             model.email = model.contactMethod.Both.emailBoth;
+             model.phone = model.contactMethod.Both.phoneBoth;
+         }
+
+         
+          console.log(model);
           this.patientService.addToPatient(model);
           this._router.navigate(['thankyou']);
 
           
       }
     }
+
+
+        EmailClicked(){
+      const ctrl: FormControl = (<any>this.signUpDetailsForm).controls.contactMethod.controls.type;
+      ctrl.setValue("Email");
+      this.selectedOption=1;
+    }
+
+PhoneClicked(){
+      const ctrl: FormControl = (<any>this.signUpDetailsForm).controls.contactMethod.controls.type;
+      ctrl.setValue("Phone");
+      this.selectedOption=2;
+    }
+
+BothClicked(){
+      const ctrl: FormControl = (<any>this.signUpDetailsForm).controls.contactMethod.controls.type;
+      ctrl.setValue("Both");
+      this.selectedOption=3;
+    }
+	
+	
+	 
 
 }
