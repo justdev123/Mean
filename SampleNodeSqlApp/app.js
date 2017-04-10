@@ -44,8 +44,6 @@ router.route('/patients')
     });
 })
 .post(function(req,res){
-       console.log('Create Patient');
-    console.log(req.body);
     var patient = new Patient();
     patient.firstName = req.body.firstName;
     patient.lastName = req.body.lastName;

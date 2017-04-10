@@ -4,17 +4,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './heroes/Card/signup.component';
-import { ActivationComponent } from './heroes/Activation/activation.component';
-import { InsurenceYesComponent } from './heroes/Card/insuranceyes.component';
+import { SignUpComponent } from './Components/Card/signup.component';
+import { ActivationComponent } from './Components/Activation/activation.component';
+import { InsurenceYesComponent } from './Components/Card/insuranceyes.component';
 import { ChoiceComponent } from './choice.component';
 import { AgeValidator } from './CustomValidators/validateAge';
-import { ThankYouComponent } from './heroes/Card/thankyou.component';
+import { ThankYouComponent } from './Components/Card/thankyou.component';
 import { CustomerComponent } from './customer.component';
 import { TestComponent } from './test.component';
 import { HeaderComponent } from './Header.component';
 import { RoutingModule } from './route.module';
+import { PatientListComponent } from './Components/Admin/patientlist.component';
+import {AgGridModule} from "ag-grid-angular/main";
 
+import { RedComponentComponent } from './Components/Admin/RedComponent.component';
+import { MyGridApplicationComponent } from './Components/Admin/MyGridApplication.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +30,19 @@ import { RoutingModule } from './route.module';
       ThankYouComponent,
       CustomerComponent,
       TestComponent,
-      HeaderComponent
+      HeaderComponent,
+      PatientListComponent,
+      RedComponentComponent,
+      MyGridApplicationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
       HttpModule,
     ReactiveFormsModule,
-    RoutingModule
+    RoutingModule,
+    AgGridModule.withComponents([RedComponentComponent])
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

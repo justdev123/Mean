@@ -6,12 +6,12 @@ import { PatientDataService } from './Services/patient-data.service';
 @Component({
 
   templateUrl: './choice.component.html',
-   styleUrls: ['./app.component.css'],
+  styles: [require('../assets/css/app.component.css')],
     providers:[PatientDataService]
 })
 
 export class ChoiceComponent implements OnInit {
-public signupimage : string ="./app/Images/sign_up_button.png";
+public signupimage : string ="../assets/images/sign_up_button.png";
 
 ngOnInit(){
  // console.log('choice constructor');

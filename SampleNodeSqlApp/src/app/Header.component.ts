@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 @Component({
 selector:'header',
   templateUrl: './header.component.html',
-  styleUrls: ['./app.component.css'],
+  styles: [require('../assets/css/app.component.css')]
 })
 
 
 export class HeaderComponent {
+  
 }

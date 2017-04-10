@@ -45,7 +45,7 @@ export class PatientDataService {
     }
 
 
-    addToPatient(body: Object)
+    addPatient(body: Object)
     {
         
         let bodyString = JSON.stringify(body); // Stringify payload
