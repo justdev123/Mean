@@ -1,0 +1,155 @@
+<form [formGroup]="signUpDetailsForm" (ngSubmit)="onSubmit(signUpDetailsForm.value,signUpDetailsForm.valid)">
+    <div class="container-fluid body-container gradiant-background">
+        <header></header>
+        <div class="content-container white-background">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <div class="form-text">FirstName</div>
+                            <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['firstName']"
+                                name="firstName">
+
+                                <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['firstName'].hasError('required')) &&
+                 !(signUpDetailsForm.controls.firstName.valid || (signUpDetailsForm.controls.firstName.pristine && !submitted))">You must enter First Name.</div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <div class="form-text">LastName</div>
+                        <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['lastName']"
+                            name="lastName">
+
+                            <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['lastName'].hasError('required')) && 
+                        !(signUpDetailsForm.controls.lastName.valid || (signUpDetailsForm.controls.lastName.pristine && !submitted))">You must enter Last Name.</div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+
+        </div>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <div class="form-text">Some Question about Email and Phone Details?</div>
+
+
+                    <div>
+                        <input type="radio" [value]="1" [formControl]="signUpDetailsForm.controls['details']" name="details" (click)="EmailClicked()"
+                            [(ngModel)]="selectedOption"> Email</div>
+
+                    <div>
+                        <input type="radio" [value]="2" [(ngModel)]="selectedOption" [formControl]="signUpDetailsForm.controls['details']" name="details"
+                            (click)="PhoneClicked()"> Text</div>
+                    <div>
+                        <input type="radio" [value]="3" [(ngModel)]="selectedOption" [formControl]="signUpDetailsForm.controls['details']" name="details"
+                            (click)="BothClicked()"> Both</div>
+                    <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['details'].hasError('required')) && 
+                        !(signUpDetailsForm.controls.details.valid || (signUpDetailsForm.controls.details.pristine && !submitted))">You must select an option.</div>
+
+            </div>
+
+
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <div formGroupName="contactMethod">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+
+                <div class="form-group">
+
+
+                    <div id="collapseOne" *ngIf="signUpDetailsForm.controls.contactMethod.controls.type.value === CONTACT_METHOD_TYPE.EMAIL"
+                        formGroupName="Email">
+                        <div class="form-text">Email:</div>
+                        <div class="panel-body">
+                            <input class="form-control" type="text" minlength="2" maxlength="50" formControlName="email">
+                            <div class="alert alert-danger" *ngIf="
+                        !(signUpDetailsForm.controls.contactMethod.controls.Email.valid || (signUpDetailsForm.controls.contactMethod.controls.Email.pristine && !submitted))">You must enter email.</div>
+
+                </div>
+            </div>
+            <div id="collapseTwo" *ngIf="signUpDetailsForm.controls.contactMethod.controls.type.value === CONTACT_METHOD_TYPE.PHONE"
+                formGroupName="Phone">
+                <div class="form-text">Phone:</div>
+                <div class="panel-body">
+                    <input class="form-control" type="phone" name="phone" formControlName="phone">
+
+                    <div class="alert alert-danger" *ngIf="
+                        !(signUpDetailsForm.controls.contactMethod.controls.Phone.valid || (signUpDetailsForm.controls.contactMethod.controls.Phone.pristine && !submitted))">You must enter phone.</div>
+
+        </div>
+    </div>
+
+    <div id="collapseThree" *ngIf="signUpDetailsForm.controls.contactMethod.controls.type.value === CONTACT_METHOD_TYPE.BOTH"
+        formGroupName="Both">
+
+        <div class="form-text">Email:</div>
+        <div class="panel-body">
+            <input class="form-control" type="text" minlength="2" maxlength="50" formControlName="emailBoth">
+            <div class="alert alert-danger" *ngIf="
+                        !(signUpDetailsForm.controls.contactMethod.controls.Both.valid || (signUpDetailsForm.controls.contactMethod.controls.Both.pristine && !submitted))">You must enter email.</div>
+
+
+        </div>
+
+        <div class="form-text">Phone:</div>
+        <div class="panel-body">
+            <input class="form-control" type="text" formControlName="phoneBoth">
+            <div class="alert alert-danger" *ngIf="
+                        !(signUpDetailsForm.controls.contactMethod.controls.Both.valid || (signUpDetailsForm.controls.contactMethod.controls.Both.pristine && !submitted))">You must enter phone.</div>
+
+
+        </div>
+        </div>
+
+        </div>
+
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-2"></div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+
+                <input type="radio" value="Confirmation" [formControl]="signUpDetailsForm.controls['confirm']" name="confirm">I
+                confirm that all information provided above is correct to best of my knowledge.
+                <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['confirm'].hasError('required')) && 
+                        !(signUpDetailsForm.controls.confirm.valid || (signUpDetailsForm.controls.confirm.pristine && !submitted))">You must provide confirmation.</div>
+        </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                 <div class="form-group">
+ <button type="submit"  value="submit" class="continue-button">SUBMIT</button>
+            </div>
+            </div>
+            <div class="col-md-1"></div>
+
+        </div>
+        </div>
+        </div>
+        </div>
+</form>

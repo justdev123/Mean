@@ -1,0 +1,65 @@
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value,signUpForm.valid)">
+    <div class="container-fluid body-container gradiant-background">
+        <header></header>
+        <div class="content-container white-background">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+
+                    <div class="form-group">
+                        <div class="form-text">*When were you born ?</div>
+                        <input class="form-control" id="dob" name="dob" type="date" [formControl]="signUpForm.controls['dob']">
+                        <div class="alert alert-danger" *ngIf="signUpForm.controls['dob'].hasError('required') && !(signUpForm.controls.dob.valid || (signUpForm.controls.dob.pristine && !submitted))">You must enter a date.</div>
+                        <div class="alert alert-danger" *ngIf="signUpForm.controls['dob'].hasError('Validate')">You must enter a date.</div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <div class="form-text">Question here ?</div>
+                        <input type="radio" name="res" value="YES" [formControl]="signUpForm.controls['res']"> YES
+                        <input type="radio" name="res" value="NO" [formControl]="signUpForm.controls['res']"> NO
+
+                        <div class="alert alert-danger" *ngIf="signUpForm.controls['res'].hasError('required') && 
+                        !(signUpForm.controls.res.valid || (signUpForm.controls.res.pristine && !submitted))">You must select an option.</div>
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+
+                <div class="form-group">
+                    <div class="form-text">*Some Important Question here ?</div>
+                    <input type="radio" name="ins" value="YES" [formControl]="signUpForm.controls['ins']"> YES
+                    <input type="radio" name="ins" value="NO" [formControl]="signUpForm.controls['ins']"> NO
+                    <input type="radio" name="ins" value="Unsure" [formControl]="signUpForm.controls['ins']"> I'M NOT SURE
+                    <div class="alert alert-danger" *ngIf="signUpForm.controls['ins'].hasError('required') 
+                            && !(signUpForm.controls.ins.valid || (signUpForm.controls.ins.pristine && !submitted))">You must select an option.</div>
+            </div>
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+               <div class="form-group">
+
+                <button type="submit"  value="CONTINUE" class="continue-button">CONTINUE</button>
+            </div>
+
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    </div>
+    </div>
+</form>
