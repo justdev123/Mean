@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientDataService } from '../../Services/patient-data.service';
+import { Router } from '@angular/router';
 @Component({
 
   templateUrl: './thankyou.component.html',
@@ -10,7 +11,7 @@ import { PatientDataService } from '../../Services/patient-data.service';
 
 export class ThankYouComponent implements OnInit {
 
-constructor(private patientService: PatientDataService) {}
+constructor(private patientService: PatientDataService,private _router: Router) {}
 ngOnInit(){
 
     
@@ -19,6 +20,10 @@ ngOnInit(){
 
       console.log(data);
     })
-}
 
+   
+}
+ redirectToPatientList(){
+             this._router.navigate(['patientlist']);
+    }
 }

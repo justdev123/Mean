@@ -13,7 +13,6 @@ import { TestComponent } from './test.component';
 import { HeaderComponent } from './Header.component';
 //import { InsuranceComponent } from './insurance.component';
 import { PatientListComponent } from './Components/Admin/patientlist.component';
-import { MyGridApplicationComponent } from './Components/Admin/MyGridApplication.component';
 var routes : Routes =[
   {path:'cardsignup',component:SignUpComponent},
   {path:'activation',component:ActivationComponent},
@@ -24,7 +23,6 @@ var routes : Routes =[
   {path:'header',component:HeaderComponent,outlet:'header'},
   {path:'test',component:TestComponent},
   {path:'patientlist',component:PatientListComponent},
-    {path:'mygridapp',component:MyGridApplicationComponent},
 ];
 
 @NgModule({

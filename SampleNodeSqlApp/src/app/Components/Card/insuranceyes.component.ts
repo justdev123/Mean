@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, Validator, FormControl } from '@angular/forms';
 import { Router,ActivatedRoute,Params } from '@angular/router';
 import { PatientDataService } from '../../Services/patient-data.service';
+import { Patient } from '../../Models/patient.interface';
 
 @Component({
 
@@ -173,18 +174,16 @@ initEmailPhoneMethodModel(){
  
 }
 
-  onSubmit(model:any,isvalid: boolean){
+  onSubmit(model:Patient,isvalid: boolean){
       this.submitted = true;
       if(isvalid)
       {
          model.DateOfBirth=this.activatedRoute.snapshot.params['dob'];
          model.question1=this.activatedRoute.snapshot.params['res'];
          model.question2=this.activatedRoute.snapshot.params['ins'];
-         if(this.selectedOption==3)
-         {
-             model.email = model.contactMethod.Both.emailBoth;
-             model.phone = model.contactMethod.Both.phoneBoth;
-         }
+         
+         model=this.SetContactDetails(model);
+     
 
          
           console.log(model);
@@ -193,6 +192,22 @@ initEmailPhoneMethodModel(){
 
           
       }
+    }
+
+    SetContactDetails(model){
+        if(this.selectedOption==1)
+         {
+             model.email = model.contactMethod.Email.email;
+         }else if(this.selectedOption==2)
+         {
+             model.phone = model.contactMethod.Phone.phone;
+         }
+        else
+         {
+             model.email = model.contactMethod.Both.emailBoth;
+             model.phone = model.contactMethod.Both.phoneBoth;
+         }
+         return model;
     }
 
 

@@ -48,7 +48,8 @@ router.route('/patients')
     patient.firstName = req.body.firstName;
     patient.lastName = req.body.lastName;
     patient.DateOfBirth = req.body.DateOfBirth;
-
+    patient.email = req.body.email;
+    patient.phone = req.body.phone;
     
     patient.question1 = req.body.question1;
     patient.question2 = req.body.question2;

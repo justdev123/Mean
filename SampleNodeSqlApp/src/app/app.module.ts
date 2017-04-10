@@ -17,8 +17,6 @@ import { RoutingModule } from './route.module';
 import { PatientListComponent } from './Components/Admin/patientlist.component';
 import {AgGridModule} from "ag-grid-angular/main";
 
-import { RedComponentComponent } from './Components/Admin/RedComponent.component';
-import { MyGridApplicationComponent } from './Components/Admin/MyGridApplication.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +30,6 @@ import { MyGridApplicationComponent } from './Components/Admin/MyGridApplication
       TestComponent,
       HeaderComponent,
       PatientListComponent,
-      RedComponentComponent,
-      MyGridApplicationComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +37,7 @@ import { MyGridApplicationComponent } from './Components/Admin/MyGridApplication
       HttpModule,
     ReactiveFormsModule,
     RoutingModule,
-    AgGridModule.withComponents([RedComponentComponent])
+    AgGridModule.withComponents([PatientListComponent])
  
   ],
   providers: [],

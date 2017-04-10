@@ -36,4 +36,8 @@ signup(){
 customer(){
   this._router.navigate(['customer']);
 }
+
+ redirectToPatientList(){
+             this._router.navigate(['patientlist']);
+    }
 }
