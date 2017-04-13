@@ -19,8 +19,8 @@
       "mobile": false,
       "styles": [
         "styles.css",
-         "../node_modules/ag-grid/dist/styles/ag-grid.css",
-         "../node_modules/ag-grid/dist/styles/theme-fresh.css"
+         "../node_modules/primeui/themes/omega/theme.css",
+         "../node_modules/primeui/primeui-ng-all.min.css"
       ],
       "scripts": [],
       "environments": {

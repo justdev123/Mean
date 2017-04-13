@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { GridOptions } from "ag-grid";
 import { PatientDataService } from '../../Services/patient-data.service';
+import { NumericEditorComponent } from './NumericEditorComponent.component';
+import { EmailEditorComponent } from './EmailEditorComponent.component';
+
 @Component({
   templateUrl: './patientlist.component.html',
   styles: [require('../../../assets/css/app.component.css')],
@@ -24,37 +27,40 @@ export class PatientListComponent {
       {
         headerName: "FirstName",
         field: "firstname",
-        width: 100
+      
       },
       {
         headerName: "LastName",
-        field: "lastname",
-        width: 100
+        field: "firstname",
+       
       },
       {
         headerName: "DateOfBirth",
         field: "dateofbirth",
-        width: 100
+        
       },
       {
         headerName: "Email",
         field: "email",
-        width: 100
+         cellEditorFramework: EmailEditorComponent,
+         editable: true,
       },
       {
         headerName: "Phone",
         field: "phone",
-        width: 100
+       // cellEditorFramework: NumericEditorComponent,
+       // editable: true,
+        
       },
       {
         headerName: "Q1",
         field: "q1",
-        width: 100
+        
       },
       {
         headerName: "Q2",
         field: "q2",
-        width: 100
+        
       },
 
     ];
@@ -65,7 +71,7 @@ export class PatientListComponent {
     this._patientDataService.getAllPatients().subscribe((data)=>{
    //data is your patient list
 
-      console.log(data);
+ //     console.log(data);
 
       for (var i = 0; i < data.length; i++) {
       rowData.push({

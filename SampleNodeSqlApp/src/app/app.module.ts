@@ -16,6 +16,10 @@ import { HeaderComponent } from './Header.component';
 import { RoutingModule } from './route.module';
 import { PatientListComponent } from './Components/Admin/patientlist.component';
 import {AgGridModule} from "ag-grid-angular/main";
+import { NumericEditorComponent } from './Components/Admin/NumericEditorComponent.component';
+import { EmailEditorComponent } from './Components/Admin/EmailEditorComponent.component';
+import { PatientListPrimeComponent } from './Components/Admin/patientListPrime.component';
+import { DataTableModule } from 'primeng/primeng';
 
 
 @NgModule({
@@ -30,6 +34,9 @@ import {AgGridModule} from "ag-grid-angular/main";
       TestComponent,
       HeaderComponent,
       PatientListComponent,
+      NumericEditorComponent,
+      EmailEditorComponent,
+      PatientListPrimeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +44,8 @@ import {AgGridModule} from "ag-grid-angular/main";
       HttpModule,
     ReactiveFormsModule,
     RoutingModule,
-    AgGridModule.withComponents([PatientListComponent])
- 
+    AgGridModule.withComponents([PatientListComponent,NumericEditorComponent,EmailEditorComponent]),
+    DataTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -24,6 +24,6 @@ ngOnInit(){
    
 }
  redirectToPatientList(){
-             this._router.navigate(['patientlist']);
+             this._router.navigate(['patientlistprime']);
     }
 }

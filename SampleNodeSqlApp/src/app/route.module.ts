@@ -13,6 +13,7 @@ import { TestComponent } from './test.component';
 import { HeaderComponent } from './Header.component';
 //import { InsuranceComponent } from './insurance.component';
 import { PatientListComponent } from './Components/Admin/patientlist.component';
+import { PatientListPrimeComponent } from './Components/Admin/patientListPrime.component';
 var routes : Routes =[
   {path:'cardsignup',component:SignUpComponent},
   {path:'activation',component:ActivationComponent},
@@ -23,6 +24,8 @@ var routes : Routes =[
   {path:'header',component:HeaderComponent,outlet:'header'},
   {path:'test',component:TestComponent},
   {path:'patientlist',component:PatientListComponent},
+  {path:'patientlistprime',component:PatientListPrimeComponent},
+  
 ];
 
 @NgModule({

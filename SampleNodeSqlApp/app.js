@@ -1,5 +1,9 @@
 var express = require('express');
 var app = express();
+
+app.use("/css",express.static(__dirname + '/src/assets/css'));
+console.log(__dirname)
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 var mongoose = require('mongoose');
@@ -12,7 +16,6 @@ var db = mongoose.connection;
 
 
 var router = express.Router();
-
 
 
 // This is required when he node api is running on different port and angular
