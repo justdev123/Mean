@@ -98,23 +98,23 @@
         </div>
     </div>
 
-    <div id="collapseThree" *ngIf="signUpDetailsForm.controls.contactMethod.controls.type.value === CONTACT_METHOD_TYPE.BOTH"
+       <div id="collapseThree" *ngIf="signUpDetailsForm.controls.contactMethod.controls.type.value === CONTACT_METHOD_TYPE.BOTH"
         formGroupName="Both">
 
         <div class="form-text">Email:</div>
         <div class="panel-body">
             <input class="form-control" type="text" minlength="2" maxlength="50" formControlName="emailBoth">
             <div class="alert alert-danger" *ngIf="
-                        !(signUpDetailsForm.controls.contactMethod.controls.Both.valid || (signUpDetailsForm.controls.contactMethod.controls.Both.pristine && !submitted))">You must enter email.</div>
+                        !(signUpDetailsForm.controls.contactMethod.controls.Both.controls.emailBoth.valid || (signUpDetailsForm.controls.contactMethod.controls.Both.controls.emailBoth.pristine && !submitted))">You must enter email.</div>
 
 
         </div>
 
         <div class="form-text">Phone:</div>
         <div class="panel-body">
-            <input class="form-control" type="text" formControlName="phoneBoth">
+            <input class="form-control" type="text" minlength="10" maxlength="10" formControlName="phoneBoth">
             <div class="alert alert-danger" *ngIf="
-                        !(signUpDetailsForm.controls.contactMethod.controls.Both.valid || (signUpDetailsForm.controls.contactMethod.controls.Both.pristine && !submitted))">You must enter phone.</div>
+                        !(signUpDetailsForm.controls.contactMethod.controls.Both.controls.phoneBoth.valid || (signUpDetailsForm.controls.contactMethod.controls.Both.controls.phoneBoth.pristine && !submitted))">You must enter phone.</div>
 
 
         </div>

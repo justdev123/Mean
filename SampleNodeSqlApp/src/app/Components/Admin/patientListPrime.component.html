@@ -6,15 +6,18 @@
                 <div class="row">
 
                     <div class="col-md-12">
-                        
-                            <p-dataTable [value]="patients">
-                                       <p-column field="firstname" header="FirstName"></p-column>
-                                        <p-column field="lastname" header="LastName"></p-column>
-                                        <p-column field="dateofbirth" header="DateOfBirth"></p-column>
-                                        <p-column field="email" header="Email"></p-column> 
-                                        <p-column field="phone" header="Phone"></p-column>
-                                        <p-column field="q1" header="Q1"></p-column>
-                                        <p-column field="q2" header="Q2"></p-column>   
+                        <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+                            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+                        </div>
+                            <p-dataTable [value]="patients" [rows]="5" [paginator]="true" [globalFilter]="gb" #dt>
+                                       <p-column field="firstname" header="FirstName" [filter]="true" filterPlaceholder="Search"  [sortable]="true"></p-column>
+                                        <p-column field="lastname" header="LastName"  [sortable]="true"></p-column>
+                                        <p-column field="dateofbirth" header="DateOfBirth" [sortable]="true"></p-column>
+                                        <p-column field="email" header="Email"  [sortable]="true"></p-column> 
+                                        <p-column field="phone" header="Phone" [sortable]="true"></p-column>
+                                        <p-column field="q1" header="Q1" [sortable]="true"></p-column>
+                                        <p-column field="q2" header="Q2" [sortable]="true"></p-column>   
                             </p-dataTable>    
                         
                     </div>
