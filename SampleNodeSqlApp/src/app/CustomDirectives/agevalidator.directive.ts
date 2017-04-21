@@ -3,6 +3,21 @@ import { Validator, AbstractControl, NG_VALIDATORS, FormControl } from '@angular
 import { DatePipe  } from '@angular/common';
 
 
+
+export class AgeValidator  {
+      constructor() {}
+      
+      static Validate(c:FormControl)
+      {
+        if(c.value==null)
+        {
+          return null;
+        }
+          return validate(c);
+      }
+
+}
+
 function validate(c:FormControl) : { [key: string]: any }{
 
 
@@ -33,16 +48,8 @@ console.log(c.value);
 
 }
 
-export class AgeValidator  {
-      constructor() {}
-      
-      static Validate(c:FormControl)
-      {
-        if(c.value==null)
-        {
-          return null;
-        }
-          return validate(c);
-      }
 
-}
+
+
+
+

@@ -5,7 +5,7 @@
             "name": "Launch localhost with sourcemaps",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:4201/Choice",
+            "url": "http://localhost:4200/Choice",
             "sourceMaps": true,
             "webRoot": "${workspaceRoot}"
         }

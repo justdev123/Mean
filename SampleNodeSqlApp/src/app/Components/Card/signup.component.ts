@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, Validator } from '@angular/forms';
-import { AgeValidator } from '../../CustomValidators/validateAge';
+
+import { DateValidator } from '../../CustomValidators/datevalidator';
+import {CalendarModule,ButtonModule} from 'primeng/primeng';
+
+
 
 @Component({
   
@@ -14,11 +18,13 @@ import { AgeValidator } from '../../CustomValidators/validateAge';
 export class SignUpComponent {
 
     signUpForm : FormGroup;
+    maxDate: Date;
     public submitted: boolean;
     public continueimage : string ="./assets/images/continue1.jpg";
-
+    
     constructor(private _router: Router, fb: FormBuilder)
     {
+      this.maxDate = new Date();
       this.signUpForm=fb.group({
         'dob': [null,Validators.compose([Validators.required])],
         'res': [null,Validators.required],
@@ -28,10 +34,9 @@ export class SignUpComponent {
 
     onSubmit(model:any,isvalid : boolean){
       this.submitted = true;
-      
       if(isvalid && model.ins=="YES")
       {
-          this._router.navigate(['insuranceyes',{dob:model.dob,res:model.res,ins:model.ins}]);
+          this._router.navigate(['insuranceyes',{dob:model.dob.toLocaleDateString(),res:model.res,ins:model.ins}]);
       }
     }
 }

@@ -6,10 +6,8 @@ import { SignUpComponent } from './Components/Card/signup.component';
 import { ActivationComponent } from './Components/Activation/activation.component';
 import { InsurenceYesComponent } from './Components/Card/insuranceyes.component';
 import { ChoiceComponent } from './choice.component';
-import { AgeValidator } from './CustomValidators/validateAge';
 import { ThankYouComponent } from './Components/Card/thankyou.component';
-import { CustomerComponent } from './customer.component';
-import { TestComponent } from './test.component';
+
 import { HeaderComponent } from './Header.component';
 //import { InsuranceComponent } from './insurance.component';
 import { PatientListComponent } from './Components/Admin/patientlist.component';
@@ -20,9 +18,7 @@ var routes : Routes =[
   {path:'insuranceyes',component:InsurenceYesComponent},
   {path:'choice',component:ChoiceComponent},
   {path:'thankyou',component:ThankYouComponent},
-  {path:'customer',component:CustomerComponent},
   {path:'header',component:HeaderComponent,outlet:'header'},
-  {path:'test',component:TestComponent},
   {path:'patientlist',component:PatientListComponent},
   {path:'patientlistprime',component:PatientListPrimeComponent},
   

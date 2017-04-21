@@ -28,6 +28,7 @@
     "express": "*",
     "font-awesome": "^4.7.0",
     "mongoose": "*",
+    "ng2-datepicker": "^1.8.3",
     "primeng": "^2.0.6",
     "primeui": "^4.1.15",
     "rxjs": "^5.0.1",

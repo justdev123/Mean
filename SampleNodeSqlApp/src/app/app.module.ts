@@ -8,10 +8,8 @@ import { SignUpComponent } from './Components/Card/signup.component';
 import { ActivationComponent } from './Components/Activation/activation.component';
 import { InsurenceYesComponent } from './Components/Card/insuranceyes.component';
 import { ChoiceComponent } from './choice.component';
-import { AgeValidator } from './CustomValidators/validateAge';
+
 import { ThankYouComponent } from './Components/Card/thankyou.component';
-import { CustomerComponent } from './customer.component';
-import { TestComponent } from './test.component';
 import { HeaderComponent } from './Header.component';
 import { RoutingModule } from './route.module';
 import { PatientListComponent } from './Components/Admin/patientlist.component';
@@ -19,7 +17,10 @@ import {AgGridModule} from "ag-grid-angular/main";
 import { NumericEditorComponent } from './Components/Admin/NumericEditorComponent.component';
 import { EmailEditorComponent } from './Components/Admin/EmailEditorComponent.component';
 import { PatientListPrimeComponent } from './Components/Admin/patientListPrime.component';
-import { DataTableModule } from 'primeng/primeng';
+import { DataTableModule,CalendarModule } from 'primeng/primeng';
+import { UnderlineDirective } from './CustomDirectives/underline.directive';
+
+
 
 
 @NgModule({
@@ -30,13 +31,12 @@ import { DataTableModule } from 'primeng/primeng';
       InsurenceYesComponent,
       ChoiceComponent,
       ThankYouComponent,
-      CustomerComponent,
-      TestComponent,
       HeaderComponent,
       PatientListComponent,
       NumericEditorComponent,
       EmailEditorComponent,
-      PatientListPrimeComponent
+      PatientListPrimeComponent,
+      UnderlineDirective
   ],
   imports: [
     BrowserModule,
@@ -45,7 +45,11 @@ import { DataTableModule } from 'primeng/primeng';
     ReactiveFormsModule,
     RoutingModule,
     AgGridModule.withComponents([PatientListComponent,NumericEditorComponent,EmailEditorComponent]),
-    DataTableModule
+    DataTableModule,
+    CalendarModule
+  ],
+  exports:[
+    UnderlineDirective
   ],
   providers: [],
   bootstrap: [AppComponent]

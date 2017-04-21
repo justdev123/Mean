@@ -20,7 +20,8 @@
       "styles": [
         "styles.css",
          "../node_modules/primeui/themes/omega/theme.css",
-         "../node_modules/primeui/primeui-ng-all.min.css"
+         "../node_modules/primeui/primeui-ng-all.min.css",
+         "../node_modules/font-awesome/css/font-awesome.min.css"
       ],
       "scripts": [],
       "environments": {

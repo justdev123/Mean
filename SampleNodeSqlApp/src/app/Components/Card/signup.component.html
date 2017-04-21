@@ -1,4 +1,4 @@
-<form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value,signUpForm.valid)">
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value,signUpForm.valid)" novalidate>
     <div class="container-fluid body-container gradiant-background">
         <header></header>
         <div class="content-container white-background">
@@ -8,7 +8,8 @@
 
                     <div class="form-group">
                         <div class="form-text">*When were you born ?</div>
-                        <input class="form-control" id="dob" name="dob" type="date" [formControl]="signUpForm.controls['dob']">
+                        
+                        <p-calendar id="dob" name="dob"  [formControl]="signUpForm.controls['dob']" readonlyInput="readonlyInput" showIcon="true" [maxDate]="maxDate"></p-calendar>
                         <div class="alert alert-danger" *ngIf="signUpForm.controls['dob'].hasError('required') && !(signUpForm.controls.dob.valid || (signUpForm.controls.dob.pristine && !submitted))">You must enter a date.</div>
                         <div class="alert alert-danger" *ngIf="signUpForm.controls['dob'].hasError('Validate')">You must enter a date.</div>
                     </div>
@@ -52,8 +53,8 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
                <div class="form-group">
-
-                <button type="submit"  value="CONTINUE" class="continue-button">CONTINUE</button>
+                <button pButton type="submit" label="CONTINUE"></button>
+               
             </div>
 
 
