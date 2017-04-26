@@ -1,7 +1,9 @@
 export class Patient {
-    firstName: string ;
 
-    lastName: string ;
+    _id : AAGUID;
+    firstname: string ;
+
+    lastname: string ;
 
    contactMethod : {
        type:string;
@@ -19,13 +21,13 @@ export class Patient {
 
    }
     
- email: string ;
+    email: string ;
    phone: string ;
-    DateOfBirth: string;
+    dateofbirth: string;
     
-    question1: string ;
+    q1: string ;
 
-    question2: string;
+    q2: string;
 
 
     question3: string;

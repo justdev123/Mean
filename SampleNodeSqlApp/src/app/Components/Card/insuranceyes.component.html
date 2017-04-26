@@ -9,11 +9,11 @@
                     <div class="col-md-10">
                         <div class="form-group">
                             <div class="form-text">FirstName</div>
-                            <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['firstName']"
-                                name="firstName">
+                            <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['firstname']"
+                                name="firstname">
 
-                                <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['firstName'].hasError('required')) &&
-                 !(signUpDetailsForm.controls.firstName.valid || (signUpDetailsForm.controls.firstName.pristine && !submitted))">You must enter First Name.</div>
+                                <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['firstname'].hasError('required')) &&
+                 !(signUpDetailsForm.controls.firstname.valid || (signUpDetailsForm.controls.firstname.pristine && !submitted))">You must enter First Name.</div>
                     </div>
                 </div>
                 <div class="col-md-1"></div>
@@ -26,11 +26,11 @@
                 <div class="col-md-10">
                     <div class="form-group">
                         <div class="form-text">LastName</div>
-                        <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['lastName']"
-                            name="lastName">
+                        <input class="form-control" type="text" minlength="2" maxlength="50" [formControl]="signUpDetailsForm.controls['lastname']"
+                            name="lastname">
 
-                            <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['lastName'].hasError('required')) && 
-                        !(signUpDetailsForm.controls.lastName.valid || (signUpDetailsForm.controls.lastName.pristine && !submitted))">You must enter Last Name.</div>
+                            <div class="alert alert-danger" *ngIf="(signUpDetailsForm.controls['lastname'].hasError('required')) && 
+                        !(signUpDetailsForm.controls.lastname.valid || (signUpDetailsForm.controls.lastname.pristine && !submitted))">You must enter Last Name.</div>
                 </div>
             </div>
             <div class="col-md-1"></div>
@@ -80,20 +80,19 @@
                         formGroupName="Email">
                         <div class="form-text">Email:</div>
                         <div class="panel-body">
-                            <input class="form-control" type="text" minlength="2" maxlength="50" formControlName="email">
-                            <div class="alert alert-danger" *ngIf="
-                        !(signUpDetailsForm.controls.contactMethod.controls.Email.valid || (signUpDetailsForm.controls.contactMethod.controls.Email.pristine && !submitted))">You must enter email.</div>
-
+                            <input class="form-control" type="text"  formControlName="email" placeholder="xyz@domain.com" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+                            <div class="alert alert-danger" *ngIf="signUpDetailsForm.controls.contactMethod.controls.Email.controls['email'].hasError('required') && submitted">You must enter email.</div>
+ <div class="alert alert-danger" *ngIf="signUpDetailsForm.controls.contactMethod.controls.Email.controls['email'].hasError('pattern')">You must enter valid email address (xyz@domain.com).</div>
                 </div>
             </div>
             <div id="collapseTwo" *ngIf="signUpDetailsForm.controls.contactMethod.controls.type.value === CONTACT_METHOD_TYPE.PHONE"
                 formGroupName="Phone">
                 <div class="form-text">Phone:</div>
                 <div class="panel-body">
-                    <input class="form-control" type="phone" name="phone" formControlName="phone">
+                    <input class="form-control" type="text"  formControlName="phone" minlength="12" maxlength="12" placeholder="###-###-####"  >
 
-                    <div class="alert alert-danger" *ngIf="
-                        !(signUpDetailsForm.controls.contactMethod.controls.Phone.valid || (signUpDetailsForm.controls.contactMethod.controls.Phone.pristine && !submitted))">You must enter phone.</div>
+               <div class="alert alert-danger" *ngIf="submitted && signUpDetailsForm.controls.contactMethod.controls.Phone.controls['phone'].hasError('required')">You must enter phone.</div>
+            <div class="alert alert-danger" *ngIf="signUpDetailsForm.controls.contactMethod.controls.Phone.controls['phone'].hasError('minlength')">You must enter valid phone number in format ###-###-####.</div>
 
         </div>
     </div>
@@ -103,18 +102,19 @@
 
         <div class="form-text">Email:</div>
         <div class="panel-body">
-            <input class="form-control" type="text" minlength="2" maxlength="50" formControlName="emailBoth">
-            <div class="alert alert-danger" *ngIf="
-                        !(signUpDetailsForm.controls.contactMethod.controls.Both.controls.emailBoth.valid || (signUpDetailsForm.controls.contactMethod.controls.Both.controls.emailBoth.pristine && !submitted))">You must enter email.</div>
+            <input class="form-control" type="text" minlength="7" maxlength="50" formControlName="emailBoth" placeholder="xyz@domain.com" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+            <div class="alert alert-danger" *ngIf="signUpDetailsForm.controls.contactMethod.controls.Both.controls['emailBoth'].hasError('required') && submitted">You must enter email.</div>
+ <div class="alert alert-danger" *ngIf="signUpDetailsForm.controls.contactMethod.controls.Both.controls['emailBoth'].hasError('pattern')">You must enter valid email address (xyz@domain.com).</div>
 
 
         </div>
 
         <div class="form-text">Phone:</div>
         <div class="panel-body">
-            <input class="form-control" type="text" minlength="10" maxlength="10" formControlName="phoneBoth">
-            <div class="alert alert-danger" *ngIf="
-                        !(signUpDetailsForm.controls.contactMethod.controls.Both.controls.phoneBoth.valid || (signUpDetailsForm.controls.contactMethod.controls.Both.controls.phoneBoth.pristine && !submitted))">You must enter phone.</div>
+            <input class="form-control" type="text"    formControlName="phoneBoth" minlength="12" maxlength="12" placeholder="###-###-####" >
+            <div class="alert alert-danger" *ngIf="submitted && signUpDetailsForm.controls.contactMethod.controls.Both.controls['phoneBoth'].hasError('required')">You must enter phone.</div>
+            <div class="alert alert-danger" *ngIf="signUpDetailsForm.controls.contactMethod.controls.Both.controls['phoneBoth'].hasError('minlength')">You must enter valid phone number in format ###-###-####.</div>
+
 
 
         </div>

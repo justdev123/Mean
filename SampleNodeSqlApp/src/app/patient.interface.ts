@@ -22,9 +22,9 @@ export class Patient {
 
     DateOfBirth: string;
     
-    question1: string ;
+    q1: string ;
 
-    question2: string;
+    q2: string;
 
 
     question3: string;

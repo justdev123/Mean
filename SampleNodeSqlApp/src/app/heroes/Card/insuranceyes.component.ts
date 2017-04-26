@@ -178,8 +178,8 @@ initEmailPhoneMethodModel(){
       if(isvalid)
       {
          model.DateOfBirth=this.activatedRoute.snapshot.params['dob'];
-         model.question1=this.activatedRoute.snapshot.params['res'];
-         model.question2=this.activatedRoute.snapshot.params['ins'];
+         model.q1=this.activatedRoute.snapshot.params['res'];
+         model.q2=this.activatedRoute.snapshot.params['ins'];
          if(this.selectedOption==3)
          {
              model.email = model.contactMethod.Both.emailBoth;
@@ -188,7 +188,7 @@ initEmailPhoneMethodModel(){
 
          
           console.log(model);
-          this.patientService.addToPatient(model);
+          this.patientService.addPatient(model);
           this._router.navigate(['thankyou']);
 
           

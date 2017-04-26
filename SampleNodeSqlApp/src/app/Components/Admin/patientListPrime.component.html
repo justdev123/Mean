@@ -2,27 +2,87 @@
     <div class="container-fluid body-container gradiant-background">
         <header></header>
         <div class="table-container white-background">
-          
-                <div class="row">
 
-                    <div class="col-md-12">
-                        <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
-                            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-                            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
-                        </div>
-                            <p-dataTable [value]="patients" [rows]="5" [paginator]="true" [globalFilter]="gb" #dt>
-                                       <p-column field="firstname" header="FirstName" [filter]="true" filterPlaceholder="Search"  [sortable]="true"></p-column>
-                                        <p-column field="lastname" header="LastName"  [sortable]="true"></p-column>
-                                        <p-column field="dateofbirth" header="DateOfBirth" [sortable]="true"></p-column>
-                                        <p-column field="email" header="Email"  [sortable]="true"></p-column> 
-                                        <p-column field="phone" header="Phone" [sortable]="true"></p-column>
-                                        <p-column field="q1" header="Q1" [sortable]="true"></p-column>
-                                        <p-column field="q2" header="Q2" [sortable]="true"></p-column>   
-                            </p-dataTable>    
-                        
-                    </div>
+              <div class="row">
+
+                <div class="col-md-12" *ngIf="edited && responsecode=='1'" class="alert alert-success box-msg" role="alert">
+                    
+                    <strong>{{this.responsedescription}}</strong> Your changes has been saved.
                 </div>
-            
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-12" *ngIf="edited && responsecode=='0'" class="alert alert-danger box-msg" role="alert">
+                    
+                    <strong>{{this.responsedescription}}</strong> 
+                </div>
+              </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+                        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                        <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+                    </div>
+                    <p-dataTable [value]="patients" selectionMode="single" [responsive]="true" [(selection)]="selectedPatient" (onRowSelect)="onRowSelect($event)"
+                        [rows]="5" [paginator]="true" [globalFilter]="gb" #dt>
+                        <p-column field="firstname" header="FirstName" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
+                        <p-column field="lastname" header="LastName" [sortable]="true"></p-column>
+                        <p-column field="dateofbirth" header="DateOfBirth" [sortable]="true"></p-column>
+                        <p-column field="email" header="Email" [sortable]="true"></p-column>
+                        <p-column field="phone" header="Phone" [sortable]="true"></p-column>
+                        <p-column field="q1" header="Q1" [sortable]="true"></p-column>
+                        <p-column field="q2" header="Q2" [sortable]="true"></p-column>
+                        <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="redirectToAddView()" label="Add"></button></div></p-footer>
+
+                    </p-dataTable>
+
+
+                    <p-dialog header="Patient Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+                        <div class="ui-grid ui-grid-responsive" *ngIf="patient">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="FirstName">First Name</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="firstname" [(ngModel)]="patient.firstname" [ngModelOptions]="{standalone: true}"/></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="LastName">Last Name</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="lastname" [(ngModel)]="patient.lastname" [ngModelOptions]="{standalone: true}"/></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="DateOfBirth">DateOfBirth</label></div>
+                                 
+                
+                                <div class="ui-grid-col-5"><p-calendar id="dob" name="dob"  [(ngModel)]="patient.dateofbirth" [ngModelOptions]="{standalone: true}" readonlyInput="readonlyInput" showIcon="true" [maxDate]="maxDate"></p-calendar></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="Email">Email</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="email" [(ngModel)]="patient.email" [ngModelOptions]="{standalone: true}"/></div>
+                            </div>
+                                  <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="Phone">Phone</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="phone" [(ngModel)]="patient.phone" [ngModelOptions]="{standalone: true}"/></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="Q1">Q1</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="question1" [(ngModel)]="patient.q1" [ngModelOptions]="{standalone: true}"/></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"><label for="Q2">Q2</label></div>
+                                <div class="ui-grid-col-8"><input pInputText id="question2" [(ngModel)]="patient.q2" [ngModelOptions]="{standalone: true}"/></div>
+                            </div>
+                        </div>
+                        <p-footer>
+                            <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                                <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+                                <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+                            </div>
+                        </p-footer>
+                    </p-dialog>
+
+                </div>
+            </div>
+
         </div>
     </div>
 

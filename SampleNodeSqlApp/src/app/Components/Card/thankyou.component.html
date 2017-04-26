@@ -4,21 +4,23 @@
          <div class="content-container white-background">
                 <div class="content">
    
-        <div class="row">
-            <div class="col-md-2"></div>
+      <div class="row">
 
-            <div class="col-md-8">
-                <div class="form-group">
-                    <div class="form-text">Thank you for signing up!!</div>
-
+                <div class="col-md-12" *ngIf="status=='1'" class="alert alert-success box-msg" role="alert">
+                    
+                    <strong>Thank you for signing up!!</strong> 
                 </div>
+              </div>
 
-            </div>
-          
-            <div class="col-md-2">
-              
-            </div>
-        </div>
+              <div class="row">
+
+                <div class="col-md-12" *ngIf="status=='0'" class="alert alert-danger box-msg" role="alert">
+                    
+                    <strong>Unable to sign up. Please contact administrator.</strong> 
+                </div>
+              </div>
+
+     
 
         <div class="row">
             <div class="col-md-2"></div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientDataService } from '../../Services/patient-data.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
 
   templateUrl: './thankyou.component.html',
@@ -11,16 +11,12 @@ import { Router } from '@angular/router';
 
 export class ThankYouComponent implements OnInit {
 
-constructor(private patientService: PatientDataService,private _router: Router) {}
+constructor(private patientService: PatientDataService,private _router: Router,private activatedRoute: ActivatedRoute) {}
+
+public status : string ='';
 ngOnInit(){
 
-    
-    this.patientService.getAllPatients().subscribe((data)=>{
-   //data is your patient list
-
-      console.log(data);
-    })
-
+this.status=this.activatedRoute.snapshot.params['status'];
    
 }
  redirectToPatientList(){

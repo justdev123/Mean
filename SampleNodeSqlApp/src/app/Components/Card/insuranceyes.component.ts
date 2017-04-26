@@ -14,9 +14,12 @@ providers:[PatientDataService]
 export class InsurenceYesComponent {
   signUpDetailsForm: FormGroup;
   public submitted : boolean;
+ // emailRegex = '';
+  phoneRegex = '([1-9]\d{2})-(\d{3})-(\d{4})';
+  public mask = [ /[1-9]/, /\d/, /\d/, , '-', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 
   public selectedOption :number ;
-public submitimage : string ="./assets/images/submit.jpg";
+  public submitimage : string ="./assets/images/submit.jpg";
    public CONTACT_METHOD_TYPE = {
       EMAIL: 'Email',
       PHONE: 'Phone',
@@ -31,8 +34,8 @@ public submitimage : string ="./assets/images/submit.jpg";
   this.selectedOption=1;
         // we will initialize our form model here
          this.signUpDetailsForm = this.fb.group({
-    'firstName': [null, Validators.required],
-    'lastName': [null, Validators.required],
+    'firstname': [null, Validators.required],
+    'lastname': [null, Validators.required],
     
     'details': [null, Validators.required],
     'confirm': [null, Validators.required],
@@ -157,7 +160,7 @@ initEmailMethodModel(){
 }
 initPhoneMethodModel(){
    const model = {
-        'phone': [null, Validators.required],
+        'phone': [null, Validators.compose([Validators.required])],
       };
       
       return model;
@@ -167,7 +170,7 @@ initEmailPhoneMethodModel(){
  
    const model = {
         'emailBoth': [null, Validators.required],
-        'phoneBoth': [null, Validators.required],
+        'phoneBoth': [null, Validators.compose([Validators.required])],
       };
       
       return model;
@@ -176,21 +179,23 @@ initEmailPhoneMethodModel(){
 
   onSubmit(model:Patient,isvalid: boolean){
       this.submitted = true;
+      console.log(model.contactMethod.Both.phoneBoth);
       if(isvalid)
       {
-         model.DateOfBirth=this.activatedRoute.snapshot.params['dob'];
-         model.question1=this.activatedRoute.snapshot.params['res'];
-         model.question2=this.activatedRoute.snapshot.params['ins'];
+         model.dateofbirth=this.activatedRoute.snapshot.params['dob'];
+         model.q1=this.activatedRoute.snapshot.params['res'];
+         model.q2=this.activatedRoute.snapshot.params['ins'];
          
          model=this.SetContactDetails(model);
      
 
          
           console.log(model);
-          this.patientService.addPatient(model);
-          this._router.navigate(['thankyou']);
-
-          
+          this.patientService.addPatient(model).subscribe(res=>{
+             
+                this._router.navigate(['thankyou',{status:res._responseModel.StatusCode}]);
+            
+          });
       }
     }
 
@@ -206,6 +211,7 @@ initEmailPhoneMethodModel(){
          {
              model.email = model.contactMethod.Both.emailBoth;
              model.phone = model.contactMethod.Both.phoneBoth;
+             
          }
          return model;
     }

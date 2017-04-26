@@ -71,13 +71,13 @@ export class PatientListComponent {
     this._patientDataService.getAllPatients().subscribe((data)=>{
    //data is your patient list
 
- //     console.log(data);
+      console.log(data);
 
       for (var i = 0; i < data.length; i++) {
       rowData.push({
 
-        firstname: data[i].firstName, lastname: data[i].lastName, dateofbirth: data[i].DateOfBirth, email: data[i].email, 
-        phone: data[i].phone, q1: data[i].question1, q2: data[i].question2
+        firstname: data[i].firstname, lastname: data[i].lastname, dateofbirth: data[i].dateofbirth, email: data[i].email, 
+        phone: data[i].phone, q1: data[i].q1, q2: data[i].q2
 
       });
     }

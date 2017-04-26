@@ -17,9 +17,9 @@ import {AgGridModule} from "ag-grid-angular/main";
 import { NumericEditorComponent } from './Components/Admin/NumericEditorComponent.component';
 import { EmailEditorComponent } from './Components/Admin/EmailEditorComponent.component';
 import { PatientListPrimeComponent } from './Components/Admin/patientListPrime.component';
-import { DataTableModule,CalendarModule } from 'primeng/primeng';
+import { DataTableModule,CalendarModule,DialogModule } from 'primeng/primeng';
 import { UnderlineDirective } from './CustomDirectives/underline.directive';
-
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 
@@ -46,7 +46,9 @@ import { UnderlineDirective } from './CustomDirectives/underline.directive';
     RoutingModule,
     AgGridModule.withComponents([PatientListComponent,NumericEditorComponent,EmailEditorComponent]),
     DataTableModule,
-    CalendarModule
+    DialogModule,
+    CalendarModule,
+    TextMaskModule
   ],
   exports:[
     UnderlineDirective

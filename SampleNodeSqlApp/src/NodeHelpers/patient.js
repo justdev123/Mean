@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 
 var patientSchema = mongoose.Schema({
-    firstName: {
+   
+    firstname: {
         type : String
      },
-     lastName: {
+     lastname: {
         type : String
      },
 
@@ -14,13 +15,13 @@ var patientSchema = mongoose.Schema({
      phone: {
         type : String
      },
-     DateOfBirth: {
+     dateofbirth: {
         type : String
      }, 
-     question1: {
+     q1: {
         type : String
      },
-      question2: {
+      q2: {
         type : String
      }
 },
@@ -29,31 +30,4 @@ var patientSchema = mongoose.Schema({
 
 var Patient = module.exports = mongoose.model('patient',patientSchema);
 
-// get patients
-
-/*module.exports.getPatients = function(callback){
-
- Patient.find({}, function(err, patients) {
-      if (err) throw err;
-
-      // object of all the users
-      if(patients.length==0){
-        console.log('no data found');
-      }
-      
-      callback(null, patients);
-
-});
-}
-
-
-module.exports.addPatient = function(callback){
-  console.log('patient js');
-
-    Patient.create({}, function(err, patient) {
-       console.log(patient);
-      if (err) throw err;      
-  });
-}
-*/
 
