@@ -1,0 +1,46 @@
+for creating new app : $ ng new todo-app
+start angular cli server : $ ng serve
+generating new component : $ ng generate class Todo --spec
+for running test cases : $ ng test
+for running code on port : ng serve --port 4202
+
+
+mongod.exe location: C:\Program Files\MongoDB\Server\3.4\bin
+mongo db location: c:\data\db
+
+to query mongodb :
+run mongod.exe
+then run C:\Program Files\MongoDB\Server\3.4\bin\mong.exe from another cmd
+
+
+db.createCollection('patient');
+show collections
+
+
+Angular New Project:
+1) update index.html
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+2) Create app.js file and install sqlserver driver
+npm install mssql
+
+3) Add lines in angular-cli.json
+    "styles": [
+        "styles.css",
+         
+"../node_modules/primeui/themes/omega/theme.css",
+        
+ "../node_modules/primeui/primeui-ng-all.min.css",
+        
+ "../node_modules/font-awesome/css/font-awesome.min.css"
+      
+],
+
+4) npm install primeng --save
+npm install primeui --save
+npm install font-awesome --save
+npm install rxjs

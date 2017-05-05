@@ -1,0 +1,54 @@
+.movie-grid{
+    margin-top: 30px;
+}
+
+.genre-style{
+    text-align: center;
+    padding: .25em 1em;
+    border: 1px solid #2399e5;
+    color: #FFFFFF;
+    background: #2399e5;
+    width: 80px;
+}
+.left-div{
+    float: left;
+}
+.right-div{
+    float: right;
+
+}
+.trailer-style{
+  text-align: right;
+    width:10%;
+}
+
+.trailer-style a{
+   color: #2399e5; 
+     
+}
+
+
+.rating-trailer-style
+{
+    background:#f6f7f9 0 0 repeat-x;
+    border: 1px solid #D5D5D5;
+    height: 1.5em;
+        clear: both;
+        padding-left: 0.1em;
+        padding-right: 0.1em;
+}
+
+
+.ui-datagrid .ui-datagrid-header{
+     background: #2399e5;
+}
+
+#chart-container-panel .ui-panel .ui-panel-titlebar{
+     background: #2399e5;
+}
+.chart-footer-text{
+       text-align: center;
+    background:#f6f7f9 0 0 repeat-x;
+    border: 1px solid #D5D5D5;
+    padding:1em;
+}

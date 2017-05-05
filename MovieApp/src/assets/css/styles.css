@@ -1,0 +1,17 @@
+.top-row{
+    height: 40px;
+    border-bottom-style: inset !important;
+    margin-top: 1em;
+}
+
+.header-text-style{
+    font-size: x-large;
+    margin-left: 1.4em;
+    margin-right: 1em;
+    font-weight: 400;
+}
+
+.gradiant-background {
+   background-color: #F1F3F5;
+   font-family: cursive;
+}

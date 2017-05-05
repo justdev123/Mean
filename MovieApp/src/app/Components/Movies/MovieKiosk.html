@@ -1,0 +1,50 @@
+<form>
+    <div class="container-fluid body-container gradiant-background">
+        <div class="table-container">
+         <div class="row">
+                <div class="col-md-12">
+                    <Header></Header>
+                </div>
+         </div>
+            <div class="row" class="movie-grid">
+                <div class="col-md-2">
+                    <Menu></Menu>
+                </div>
+                <div class="col-md-6">
+                    <p-dataGrid [value]="movies" [paginator]="true" [rows]="6" >
+                        <p-header class="movie-header-style">
+                            Latest Movies Released
+                        </p-header>
+                        <ng-template let-movie pTemplate="item">
+                            <div style="padding:13px" class="ui-g-12 ui-md-6">
+                                <p-panel [header]="movie.Title" [style]="{'text-align':'center'}">
+                                     <img src="showcase/resources/demo/images/car/{{movie.image}}.gif">
+                                    <div>{{movie.Description}}</div>
+                                     <div>{{movie.Genre}}</div>
+                                     <div class="genre-style">{{movie.GenreName}}</div>
+                                     
+                                </p-panel>
+                                <div class="rating-trailer-style">
+                                   <div class="left-div"> <p-rating  class="rating-style" [(ngModel)]="movie.Rating"  name="ratings"></p-rating></div>
+                                    <div class="right-div"><a  class="trailer-style" href="{{movie.TrailerUrl}}">Trailer</a></div>
+                                    </div>
+                            </div>
+                        </ng-template>
+                    </p-dataGrid>
+                </div>
+                <div class="col-md-3">
+                    <p-panel id="chart-container-panel" header="Movie Genres" [style]="{'text-align':'center'}">
+                    <p-chart type="bar" [data]="data"></p-chart>
+                    </p-panel>
+                <div class="chart-footer-text">
+                    <div>Wanna add a new movie.Head over to add new movie form.</div>
+                    <div><button pButton  class="ui-button-secondary"  label="Add new Movie"></button></div>
+                </div>
+            
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</form>

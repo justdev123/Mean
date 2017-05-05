@@ -1,0 +1,24 @@
+
+
+
+.ui-menu  {
+    
+    width:25em;
+    border: none;
+    margin-top: -1.4em;
+}
+
+.ui-menu .ui-widget-header{
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.ui-widget-content a {
+    color: #2399e5;
+}
+
+.ui-menu .ui-menuitem-link{
+    line-height: 60px;
+    font-size: larger;
+}
