@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit{
                 //label: 'File',
                 //icon: 'fa-file-o',
                 items: [{
-                        label: 'Home', 
+                        label: 'Home', routerLink:['/Home']
                        // icon: 'fa-plus',
                         
                     },
@@ -52,7 +52,7 @@ export class MenuComponent implements OnInit{
                // label: 'Edit',
                // icon: 'fa-edit',
                 items: [
-                    {label: 'Login' },//, icon: 'fa-mail-forward'},
+                    {label: 'Login', routerLink: ['/Login']  },//, icon: 'fa-mail-forward'},
               
                 ]
             },

@@ -6,7 +6,7 @@ import { DataGridModule } from 'primeng/primeng';
 import { PanelModule, ButtonModule, ChartModule } from 'primeng/primeng';
 import { StarRatingModule } from 'angular-star-rating';
 @Component({
-  selector: 'app-root',
+ // selector: 'app-root',
   templateUrl: './MovieKiosk.html',
   styles: [require('../../../assets/css/MovieKiosk.css'),
   require('../../../assets/css/styles.css')],
@@ -37,7 +37,7 @@ export class MovieKioskComponent implements OnInit {
     this._MovieDataService.getAllMovies().subscribe((res) => {
       if (res['StatusCode'] == '1') {
         this.movies = res['RecordSet'].recordset;
-console.log(this.movies);
+
       }
     });
     var rowData: any[] = [];

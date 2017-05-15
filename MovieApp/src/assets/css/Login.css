@@ -1,0 +1,48 @@
+.center-container{
+    position: relative;
+}
+
+.sign-up-style{
+   
+    margin: 5% 0% 0% 20% ;
+}
+
+.login-button-style{
+
+    
+    width: 50%;
+    text-align: center; 
+   
+}
+.registration-status-style
+{
+    width: 50%;
+}
+.register-url-style{
+  
+    margin-top: 1em;
+    width: 50%;
+    
+}
+
+.register-url-style > div {
+    float: right;
+}
+
+.login-style{
+    margin: 1em;
+}
+
+.login-input-error-style{
+    display: flex;
+}
+
+.login-input-error-style > input{
+    width:50%;
+}
+
+
+.login-input-error-style > div{
+    width:40%;
+    margin-left: 1em;
+}

@@ -1,0 +1,45 @@
+.register-button-style{
+    width: 100%;
+    text-align: center;
+    float: right;
+}
+
+.registration-style{
+   
+    margin: 5% 0% 0% 20% ;
+}
+
+.registration-status-style{
+    margin: 5% 0% 0% 20% ;
+}
+.div-container-style
+{
+     display: flex;
+}
+
+.register-input-error-style
+{
+    display: flex;
+}
+
+.register-input-error-style > input{
+    width:50%;
+}
+
+
+.register-input-error-style > div{
+    width:40%;
+    margin-left: 1em;
+}
+
+.register-url-style{
+  
+    margin-top: 1em;
+    width: 50%;
+    
+}
+
+.register-url-style > div {
+    float: right;
+}
+

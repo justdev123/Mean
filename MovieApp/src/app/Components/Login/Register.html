@@ -1,0 +1,78 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm.value,registrationForm.valid)">
+    <div class="container-fluid body-container gradiant-background">
+        <div class="table-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <Header></Header>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <Menu></Menu>
+                </div>
+                <div class="col-md-8">
+                    <div class="registration-style">
+
+                        <div class="form-group">
+                            <div class="form-text"> User Name </div>
+                            <div class="register-input-error-style">
+                                <input class="form-control" minlength="5" maxlength="20" type="text" name="username" [formControl]="registrationForm.controls['username']"
+                              />
+                                <div class="alert alert-danger" *ngIf="(registrationForm.controls.username.hasError('required')) &&
+                        !(registrationForm.controls.username.valid || (registrationForm.controls.username.pristine && !submitted))">User Name is required.</div>
+                                <div class="alert alert-danger" *ngIf="registrationForm.controls.username.hasError('minlength') || registrationForm.controls.username.hasError('maxlength') || registrationForm.controls.username.hasError('pattern')">Username allowed : Min (5 chars)- Max(20 chars) and a combination of alphanumeric, underscore and dot. </div>
+                        
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-text"> Email </div>
+                            <div class="register-input-error-style">
+                                <input class="form-control" minlength="2" maxlength="50" type="text" name="email" [formControl]="registrationForm.controls['email']"
+                                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" />
+                                <div class="alert alert-danger" *ngIf="(registrationForm.controls.email.hasError('required')) &&
+                 !(registrationForm.controls.email.valid || (registrationForm.controls.email.pristine && !submitted))">Email is required.</div>
+                                <div class="alert alert-danger" *ngIf="registrationForm.controls.email.hasError('pattern')">You must enter valid email address (xyz@domain.com).</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-text"> Password </div>
+                            <div class="register-input-error-style">
+                                <input class="form-control" minlength="3" maxlength="12" type="password" name="password" [formControl]="registrationForm.controls['password']"
+                                />
+                                <div class="alert alert-danger" *ngIf="(registrationForm.controls.password.hasError('required')) &&
+                 !(registrationForm.controls.password.valid || (registrationForm.controls.password.pristine && !submitted))">Password is required.</div>
+                                <div class="alert alert-danger" *ngIf="registrationForm.controls.password.hasError('minlength') || registrationForm.controls.password.hasError('maxlength')">Password allowed : Min (3 chars)- Max(12 chars). </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-text"> Confirm Password </div>
+                            <div class="register-input-error-style">
+                                <input class="form-control" minlength="3" maxlength="12" type="password" name="cpassword" [formControl]="registrationForm.controls['cpassword']"
+                                    [equalTo]="registrationForm.controls['password']" />
+                                <div>
+                                    <div class="alert alert-danger" *ngIf="(registrationForm.controls.cpassword.hasError('required')) &&
+                 !(registrationForm.controls.cpassword.valid || (registrationForm.controls.cpassword.pristine && !submitted))">Password Confirmation is required.</div>
+                                    <div class="alert alert-danger" *ngIf=" registrationForm.controls.cpassword.hasError('equalTo')">Password Mismatch.</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group register-url-style">
+                            <div>
+                                <button class="register-button-style" pButton type="submit" label="Register"></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-2">
+              
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

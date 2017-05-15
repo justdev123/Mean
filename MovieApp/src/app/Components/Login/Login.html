@@ -1,0 +1,68 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value,signupForm.valid)">
+    <div class="container-fluid body-container gradiant-background">
+        <div class="table-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <Header></Header>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <Menu></Menu>
+                </div>
+                
+                <div class="col-md-8">
+             
+
+                    <div class="sign-up-style">
+                    <div class="registration-status-style">
+                        <div *ngIf="edited && status=='1'" class="alert alert-success box-msg" role="alert">
+                            <strong>Registration Successful</strong>
+                        </div>
+                        <div *ngIf="edited && status=='0'" class="alert alert-danger box-msg" role="alert">
+                            <strong>Registration UnSuccessful. Please try again later.</strong>
+                        </div>
+                         <div *ngIf="edited && status=='3'" class="alert alert-danger box-msg" role="alert">
+                            <strong>Username or Password incorrect. Please try again...</strong>
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <div class="form-text">UserName</div>
+                            <div class="login-input-error-style">
+                            <input class="form-control input-style" type="text" minlength="2" maxlength="50" [formControl]="signupForm.controls['username']" name="username">
+
+                            <div class="alert alert-danger error-style" *ngIf="(signupForm.controls.username.hasError('required')) &&
+                 !(signupForm.controls.username.valid || (signupForm.controls.username.pristine && !submitted))">User Name is required.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-text">Password</div>
+                            <div class="login-input-error-style">
+                            <input class="form-control input-style" type="password" minlength="2" maxlength="50" [formControl]="signupForm.controls['password']"
+                                name="password">
+
+                            <div class="alert alert-danger error-style" *ngIf="(signupForm.controls.password.hasError('required')) &&
+                 !(signupForm.controls.password.valid || (signupForm.controls.password.pristine && !submitted))">Password is required.</div>
+                            </div>
+                        </div>
+                      
+                        <div class="form-group">
+                            <button class="login-button-style" pButton type="submit" label="SUBMIT"></button>
+                        </div>
+                        <div class="form-group register-url-style">
+                            <div>
+                            <a (click)="onRegister()">Register </a>
+                            </div>
+                            
+                        </div>
+                    
+                </div>
+                    
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
