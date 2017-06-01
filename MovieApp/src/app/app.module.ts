@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MovieKioskComponent } from './Components/Movies/MovieKiosk';
 import { MenuComponent } from './Components/Menu';
 import { ContextMenuModule, MenuModule, MenuItem } from 'primeng/primeng';
-import {DataGridModule,PanelModule,ButtonModule,ChartModule , RatingModule} from 'primeng/primeng';
+import {DataGridModule,PanelModule,ButtonModule,ChartModule , RatingModule , CalendarModule} from 'primeng/primeng';
 import { HeaderComponent } from './Components/Header';
 import { RoutingModule } from './route.module';
 import { LoginComponent } from './Components/Login/Login';
@@ -15,6 +15,11 @@ import { AppComponent } from './Components/app.component';
 import { RegisterComponent } from './Components/Login/Register';
 //import { EqualValidator } from './Directives/password-validator.directive';
 import { CustomFormsModule } from 'ng2-validation';
+import { RegisterCustomerComponent } from './Components/Customers/RegisterCustomer';
+import { LoggedUserGuard } from './Guard/LoggedUserGuard';
+import { CustomerComponent } from './Components/Customers/Customer';
+
+
 @NgModule({
   declarations: [
    AppComponent,
@@ -23,6 +28,8 @@ import { CustomFormsModule } from 'ng2-validation';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
+    RegisterCustomerComponent,
+    CustomerComponent
 
 //directives
    // EqualValidator
@@ -41,9 +48,12 @@ CustomFormsModule,
     PanelModule ,
     ButtonModule ,
     ChartModule ,
-    RatingModule
+    RatingModule,
+    CalendarModule
   ],
-  providers: [],
+  providers: [
+    LoggedUserGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

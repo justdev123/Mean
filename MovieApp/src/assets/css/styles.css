@@ -18,3 +18,11 @@
 .alert{
     padding: 5px;
 }
+
+.loggedin-user-text-style{
+    float: right;
+      color: #07bfe7;
+    font-size: 18px;
+    text-decoration: underline;
+}
+

@@ -66,9 +66,6 @@ router.route('/movies')
 
 router.route('/movies/getcountbygenre')
     .get(function (req, res) {
-
-
-
         var request = new sql.Request();
 
         request.execute('dbo.GetMovieCountByGenre', function (err, recordset) {
@@ -108,6 +105,56 @@ router.route('/users')
         })
 
     });
+
+
+router.route('/customers')
+    .get(function (req, res) {
+        var request = new sql.Request();
+console.log('customer get');
+        request.execute('dbo.GetAllCustomers', function (err, recordset) {
+            if (err) {
+                console.log(err);
+                var _responseModel = new ResponseModel('0', err);
+                return res.json({ _responseModel });
+            }
+            var _responseModel = new ResponseModel('1', 'Success', recordset);
+            //console.log(recordset);
+            res.send(_responseModel);
+            // sql.close();
+        });
+
+
+    })
+    .post(function (req, res) {
+        var request = new sql.Request();
+        request.input('FirstName', sql.NVarChar, req.body.firstname);
+        request.input('LastName', sql.NVarChar, req.body.lastname);
+        request.input('Email', sql.NVarChar, req.body.email);
+        request.input('Phone', sql.NVarChar, req.body.phone);
+        request.input('DOB', sql.NVarChar, req.body.dob);
+        request.output('ID', sql.Int);
+        request.execute('dbo.CreateCustomer', function (err, recordset) {
+           var _responseModel =null; 
+            if (err) {
+                console.log(err);
+                _responseModel = new ResponseModel('0', err);
+                return res.json({ _responseModel });
+            }
+            
+            if(recordset.output.ID=='-1'){
+                 _responseModel = new ResponseModel(recordset.output.ID, 'Warning', recordset);
+            }else
+            {
+                 _responseModel = new ResponseModel('1', 'Success', recordset);
+            //console.log(recordset);
+            }
+            return res.json(_responseModel);
+        })
+
+    });
+
+
+    
 
 router.route('/users/authenticate')
     .post(function (req, res) {

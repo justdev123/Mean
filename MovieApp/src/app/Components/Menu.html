@@ -1,3 +1,9 @@
 <div id="menu">
-<p-menu  [model]="items"></p-menu>
+    <p-menu [model]="items"></p-menu>
+<div class="logout-button-style">
+    <button type="button" class="btn btn-primary" [style.visibility]="(!isLoggedOut) ? 'hidden' : 'visible' "
+    (click)="logout()">Logout</button>
+
+</div>
+    
 </div>

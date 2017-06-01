@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'Header',
@@ -6,6 +6,16 @@ import { Component } from '@angular/core';
     styles: [require('../../assets/css/styles.css')]
   
 })
-export class HeaderComponent{
+export class HeaderComponent implements OnInit{
+username: string ='';
+    ngOnInit(){
+        if(localStorage.getItem('username')==null){
+            this.username = '';
+        }else{
+
+        
+        this.username = 'Welcome  ' + localStorage.getItem('username');
+        }
+    }
 
 }
